@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Files</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-4">
+<h2>Your Files</h2>
+
+<a class="btn btn-success mb-3" href="/upload.html">Upload new file</a>
+
+<table class="table" id="filesTable"></table>
+
+<script src="app.js"></script>
+<script>
+async function loadFiles() {
+    const files = await api("/api/files/");
+    let html = `
+      <tr>
+        <th>ID</th><th>Name</th><th>Status</th><th></th>
+      </tr>`;
+
+    for (let f of files) {
+        html += `
+            <tr>
+              <td>${f.id}</td>
+              <td>${f.filename}</td>
+              <td>${f.status}</td>
+              <td><a href="/file.html?id=${f.id}" class="btn btn-primary btn-sm">Open</a></td>
+            </tr>
+        `;
+    }
+    document.getElementById("filesTable").innerHTML = html;
+}
+
+loadFiles();
+</script>
+</body>
+</html>

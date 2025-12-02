@@ -1,0 +1,79 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: codechecker
+      POSTGRES_USER: codechecker
+      POSTGRES_PASSWORD: codechecker
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_net
+
+  redis:
+    image: redis:7
+    command: ["redis-server", "--save", "60", "1"]
+    networks:
+      - app_net
+
+  backend:
+    build: ./codechecker
+    container_name: backend
+    command: gunicorn codechecker.wsgi:application --bind 0.0.0.0:8000
+    env_file: ./codechecker/.env
+    volumes:
+      - ./codechecker:/app
+      - media:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app_net
+
+  celery:
+    build: ./codechecker
+    container_name: celery
+    command: celery -A codechecker worker --loglevel=info
+    env_file: ./codechecker/.env
+    volumes:
+      - ./codechecker:/app
+      - media:/app/media
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app_net
+
+  celery-beat:
+    build: ./codechecker
+    container_name: celery-beat
+    command: celery -A codechecker beat --loglevel=info --pidfile=/tmp/celerybeat.pid
+    env_file: ./codechecker/.env
+    volumes:
+      - ./codechecker:/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app_net
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - app_net
+
+volumes:
+  postgres_data:
+  media:
+
+networks:
+  app_net:

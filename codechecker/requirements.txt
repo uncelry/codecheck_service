@@ -1,0 +1,15 @@
+pytest
+Django>=4.2
+djangorestframework
+psycopg2-binary
+celery[redis]
+redis
+flake8
+python-dotenv
+gunicorn
+django-cors-headers
+drf-yasg
+pytest-django
+djangorestframework-simplejwt
+requests
+django-cors-headers

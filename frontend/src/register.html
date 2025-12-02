@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-5">
+
+<h2>Register</h2>
+
+<form id="regForm">
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="text" name="email" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label>Password</label>
+    <input type="password" name="password" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label>Confirm password</label>
+    <input type="password" name="password2" class="form-control">
+  </div>
+
+  <button class="btn btn-primary">Register</button>
+</form>
+
+<script src="app.js"></script>
+<script>
+document.querySelector("#regForm").onsubmit = async (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const password2 = e.target.password2.value;
+
+    const resp = await api("/api/users/register/", "POST", {
+        email,
+        password,
+        password2,
+    }, false, false);
+
+    if (resp.email) {
+        alert("Success, proceed to login");
+        window.location = "/login.html";
+    } else {
+        alert("Error: " + JSON.stringify(resp));
+    }
+};
+</script>
+</body>
+</html>

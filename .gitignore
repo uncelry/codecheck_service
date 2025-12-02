@@ -1,0 +1,113 @@
+# =============================
+#     PYCHARM / IDEA
+# =============================
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# =============================
+#     PYTHON / DJANGO
+# =============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.swp
+*.egg-info/
+.eggs/
+*.egg
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+
+# Migrations cache
+**/migrations/**.pyc
+**/migrations/*.py~
+**/migrations/*.bak
+
+# But keep migration files
+!**/migrations/__init__.py
+
+# Virtual envs
+venv/
+env/
+ENV/
+.venv/
+.venv*/
+
+# Local Django files
+local_settings.py
+.env
+.env.*
+*.env
+*.secret
+secrets.json
+
+!.env.example
+
+# Static & Media
+staticfiles/
+static/
+media/
+
+# =============================
+#     CELERY
+# =============================
+celerybeat.pid
+celerybeat-schedule
+celerybeat-schedule.db
+worker.pid
+
+# =============================
+#     REDIS (local dumps)
+# =============================
+dump.rdb
+appendonly.aof
+
+# =============================
+#     NODE / JS FRONTEND
+# =============================
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+
+# =============================
+#     NGINX
+# =============================
+nginx/*.log
+nginx/logs/
+*.pid
+
+# =============================
+#     DOCKER
+# =============================
+docker-compose.override.yml
+*.pid
+docker/*.log
+
+# Ignore local dev volumes
+volumes/
+tmp/
+logs/
+
+# =============================
+#     SYSTEM
+# =============================
+.DS_Store
+Thumbs.db
+
+# =============================
+#     EDITOR / OS
+# =============================
+*.kate-swp
+.sublime-project
+.sublime-workspace
+.vscode/
