@@ -1,8 +1,8 @@
 ## Запуск проекта
 1. Создайте и заполните .env _(пример приведен в codechecker/.example.env)_
-2. `docker-compose up --build` (первые миграции запускать вручную: `docker-compose run web python manage.py migrate`).
+2. `docker-compose up --build`
 3. Celery worker/beat запускаются как сервисы (celery и celery-beat в compose).
-4. Откройте http://localhost:8080/register.html/ — UI; API по http://localhost:8000/api/files/.
+4. Откройте http://localhost:8080/login.html/ — UI; API по http://localhost:8000/api/files/.
 
 Запуск тестов: `docker-compose exec web pytest -vv`
 
