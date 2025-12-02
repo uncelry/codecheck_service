@@ -13,3 +13,4 @@ pytest-django
 djangorestframework-simplejwt
 requests
 django-cors-headers
+apscheduler

@@ -19,6 +19,8 @@ services:
     build: ./codechecker
     container_name: backend
     env_file: ./codechecker/.env
+    environment:
+      - ENABLE_APSCHEDULER=true
     entrypoint: ["/entrypoint.sh"]
     volumes:
       - ./codechecker:/app
