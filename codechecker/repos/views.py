@@ -1,16 +1,9 @@
-from rest_framework import viewsets, generics, permissions, status
+from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from repos.models import SourceFile
 from repos.serializers import FileListSerializer, FileDetailSerializer, FileUploadSerializer
 from checks.tasks import trigger_check_for_file
-from django.shortcuts import get_object_or_404
 
-class UserFilesListView(generics.ListAPIView):
-    serializer_class = FileListSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        return SourceFile.objects.filter(owner=self.request.user, deleted=False)
 
 class FileViewSet(viewsets.ModelViewSet):
     """
@@ -27,7 +20,7 @@ class FileViewSet(viewsets.ModelViewSet):
         return FileDetailSerializer
 
     def get_queryset(self):
-        return SourceFile.objects.filter(owner=self.request.user)
+        return SourceFile.objects.filter(owner=self.request.user, deleted=False)
 
     def perform_destroy(self, instance):
         # soft-delete
