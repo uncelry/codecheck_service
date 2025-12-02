@@ -11,10 +11,10 @@
 
 ### Frontend
 Простейшее js/html приложение с базовым UI. Экраны доступны по адресам:
-- http://localhost:8080/register.html/ - регистрация
-- http://localhost:8080/login.html/ - вход
-- http://localhost:8080/files.html/ - список файлов пользователя
-- http://localhost:8080/upload.html/ - загрузка нового файла
+- http://localhost:8080/register.html - регистрация
+- http://localhost:8080/login.html - вход
+- http://localhost:8080/files.html - список файлов пользователя
+- http://localhost:8080/upload.html - загрузка нового файла
 - http://localhost:8080/file.html?id={file_id} - информация о файле пользователя
 
 Само приложение имеет минимальный UI, который позволяет пользоваться API
