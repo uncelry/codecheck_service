@@ -25,5 +25,18 @@ async function api(path, method = "GET", body = null, isForm = false, needs_toke
         body: isForm ? body : body ? JSON.stringify(body) : null
     });
 
-    return resp.json();
+    let data = null;
+
+    try {
+        data = await resp.json();
+    } catch (e) {
+        data = {};
+    }
+
+    if (resp.status === 401 || resp.status === 403) {
+        window.location = "/login.html";
+        return;
+    }
+
+    return data;
 }
