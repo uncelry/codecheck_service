@@ -39,8 +39,8 @@ API и т.д.
 
 Backend полностью отделен от frontend'а за счет разнесения их по отдельным сервисом и хорошего тона в архитектуре
 
-http://localhost:8000/api/users/register/ - регистрация
-http://localhost:8000/api/users/login/ - авторизация
-http://localhost:8000/api/files/ - список файлов / добавление файлов
-http://localhost:8000/api/files/{file_id}/ - получение данных о файле / редактирование файла
-http://localhost:8000/api/files/{file_id}/rerun/ - перезапуск проверки файла
+- http://localhost:8000/api/users/register/ - регистрация
+- http://localhost:8000/api/users/login/ - авторизация
+- http://localhost:8000/api/files/ - список файлов / добавление файлов
+- http://localhost:8000/api/files/{file_id}/ - получение данных о файле / редактирование файла
+- http://localhost:8000/api/files/{file_id}/rerun/ - перезапуск проверки файла

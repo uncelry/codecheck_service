@@ -17,7 +17,6 @@
 <button class="btn btn-warning" id="recheck">Recheck</button>
 <button class="btn btn-danger" id="delete">Delete</button>
 
-<!-- NEW: update file -->
 <button class="btn btn-primary" id="updateBtn">Update file</button>
 <input type="file" id="fileInput" style="display:none" />
 
@@ -62,19 +61,13 @@ document.getElementById("delete").onclick = async () => {
     window.location = "/files.html";
 };
 
-/* ---------------------------------------------------------
-    UPDATE FILE (PATCH)
---------------------------------------------------------- */
-
 const updateBtn = document.getElementById("updateBtn");
 const fileInput = document.getElementById("fileInput");
 
-// нажали "Update file" → открыть выбор файла
 updateBtn.onclick = () => {
     fileInput.click();
 };
 
-// выбрали файл → отправить форму
 fileInput.onchange = async () => {
     const file = fileInput.files[0];
     if (!file) return;
@@ -85,7 +78,7 @@ fileInput.onchange = async () => {
     await api(`/api/files/${id}/`, "PATCH", formData, true);
 
     alert("File updated!");
-    load(); // перезагрузить данные
+    load();
 };
 
 load();
