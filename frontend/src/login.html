@@ -38,6 +38,9 @@ document.querySelector("#loginForm").onsubmit = async (e) => {
     if (resp.access) {
         saveTokens(resp.access, resp.refresh);
         window.location = "/files.html";
+    }
+    else if (resp.detail === "Email not verified") {
+        alert("Email not verified");
     } else {
         alert("Invalid credentials");
     }

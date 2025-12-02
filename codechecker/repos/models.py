@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import User
 
 def user_upload_path(instance, filename):
     return f'user_{instance.owner.id}/{filename}'

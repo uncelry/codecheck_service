@@ -3,7 +3,7 @@ import pytest
 from checks.models import CheckLog
 from checks.tasks import run_flake8_check
 from repos.models import SourceFile
-from django.contrib.auth.models import User
+from users.models import User
 
 
 @pytest.mark.django_db

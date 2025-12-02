@@ -1,6 +1,6 @@
 from django.db import models
 from repos.models import SourceFile
-from django.contrib.auth.models import User
+
 
 class CheckLog(models.Model):
     STATUS_CHOICES = [

@@ -1,0 +1,16 @@
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const uid = params.get("uid");
+    const token = params.get("token");
+
+    fetch("http://localhost:8000/api/users/verify-email/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({uid, token})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        alert(data.detail);
+        window.location = "/login.html";
+    });
+</script>
