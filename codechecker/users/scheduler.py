@@ -7,6 +7,6 @@ def start():
     scheduler = BackgroundScheduler()
 
     # Раз в 60 секунд
-    scheduler.add_job(delete_expired_unverified_users, "interval", seconds=5)
+    scheduler.add_job(delete_expired_unverified_users, "interval", seconds=60)
 
     scheduler.start()
